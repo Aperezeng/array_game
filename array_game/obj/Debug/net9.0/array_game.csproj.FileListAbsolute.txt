@@ -1,0 +1,14 @@
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.GeneratedMSBuildEditorConfig.editorconfig
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.AssemblyInfoInputs.cache
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.AssemblyInfo.cs
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.csproj.CoreCompileInputs.cache
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/bin/Debug/net9.0/array_game
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/bin/Debug/net9.0/array_game.deps.json
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/bin/Debug/net9.0/array_game.runtimeconfig.json
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/bin/Debug/net9.0/array_game.dll
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/bin/Debug/net9.0/array_game.pdb
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.dll
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/refint/array_game.dll
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.pdb
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.genruntimeconfig.cache
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/ref/array_game.dll
