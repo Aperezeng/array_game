@@ -12,3 +12,4 @@
 /Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.pdb
 /Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.genruntimeconfig.cache
 /Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/ref/array_game.dll
+/Users/aperez91/Documents/Florians_projects/array_game/array_game/obj/Debug/net9.0/array_game.sourcelink.json

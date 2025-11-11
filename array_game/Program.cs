@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-
+﻿using System.Text;
 public class AsciiRandomGenerator;
 
 namespace array_game
@@ -38,11 +36,11 @@ namespace array_game
 
             Console.WriteLine("Select a data type to populate your grid. Enter '1' for numbers, '2' for symbols, or '3' for letters");
             string choice = Console.ReadLine();
-
+            
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
-                {   
+                {
                     //For Loop that will populate array with random numbers
                     if (CHOICE_NUMBERS.Contains(choice))
                     {
@@ -67,20 +65,23 @@ namespace array_game
                         string randomLetter = ((char)lowerAbc).ToString();
                         playground[i, j] = randomLetter;
                     }
-                    
                 }
                 
             }
 
+            ConsoleColor[] colors = { ConsoleColor.Red, ConsoleColor.Blue, ConsoleColor.Green, ConsoleColor. Yellow };
+            
             //For Loop that will go through each cell and let us find out what value is at each index
             for (int i = 0; i < playground.GetLength(0); i++)
             {
                 for (int j = 0; j < playground.GetLength(1); j++)
+                    
                 {
+                    Console.ForegroundColor = colors[j % colors.Length];
                     Console.Write(playground[i, j] + "\t");
                 }
-
                 Console.WriteLine();
+                Console.ResetColor();
             }
 
             // Will ask user what new numerical value they want 
@@ -111,6 +112,7 @@ namespace array_game
             {
                 for (int j = 0; j < playground.GetLength(1); j++)
                 {
+                    Console.ForegroundColor = colors[j % colors.Length];
                     Console.Write(playground[i, j] + "\t");
                 }
 
@@ -119,7 +121,5 @@ namespace array_game
         }
     }
 
-    internal class ascii
-    {
-    }
+    
 }
