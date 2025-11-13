@@ -5,15 +5,11 @@ namespace array_game
 {
     internal class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             const string CHOICE_NUMBERS = "1";
             const string CHOICE_SYMBOLS = "2";
             const string CHOICE_LETTERS = "3";
-            const int LOWER_RANGE_NUMBERS = 48; // ASCII lower range for numbers
-            const int UPPER_RANGE_NUMBERS = 57; // ASCII upper range for numbers
-            const int LOWER_RANGE_SYMBOLS = 33; // ASCII lower range for symbols
-            const int UPPER_RANGE_SYMBOLS = 47; // ASCII upper range for symbols
             const int LOWER_RANGE_LOWERCASE = 97; // ASCII lower range for lowercase letters
             const int UPPER_RANGE_LOWERCASE = 122; // ASCII upper range for lowercase letters
             
@@ -41,21 +37,39 @@ namespace array_game
             {
                 for (int j = 0; j < columns; j++)
                 {
+                    
                     //For Loop that will populate array with random numbers
                     if (CHOICE_NUMBERS.Contains(choice))
                     {
-                        int numbers = random.Next(LOWER_RANGE_NUMBERS, UPPER_RANGE_NUMBERS + 1); // ASCII range for 0-9
-                        // Convert the integer to a string
-                        string randomNumber = numbers.ToString();
-                        playground[i, j] = randomNumber;
+                        playground = new string[rows, columns];
+                        int counter = 0;
+                        
+                        for (int k = 0; k < rows; k++)
+                            for (int l = 0; l < columns; l++)
+                            {
+                                playground[i, j] = counter.ToString();
+                                counter++;
+                            } 
                     }
 
                     if (CHOICE_SYMBOLS.Contains(choice))
                     {
-                        int symbolAscii = random.Next (LOWER_RANGE_SYMBOLS, UPPER_RANGE_SYMBOLS); 
-                        // Convert the ASCII value to a string
-                        string randomSymbol = ((char)symbolAscii).ToString();
-                        playground[i, j] = randomSymbol;
+                        char evenSymbol = '$';
+                        char oddSymbol = '*';
+                        {
+                            // Check if the sum of indices (i + j) is even or odd
+                            if ((i + j) % 2 == 0)
+                            {
+                                //Print evenSymbol for even sum
+                                playground[i, j] = evenSymbol.ToString();;
+                            }
+                            else
+                            {
+                                // Print symbolOdd for odd sum
+                                playground[i, j] = oddSymbol.ToString();
+                            }
+                            
+                        }
                     }
 
                     if (CHOICE_LETTERS.Contains(choice))
@@ -78,7 +92,8 @@ namespace array_game
                     
                 {
                     Console.ForegroundColor = colors[j % colors.Length];
-                    Console.Write(playground[i, j] + "\t");
+                    //Console.Write(playground[i, j] + "\t");
+                    Console.Write($"[{i},{j}]: {playground[i, j]} \t");
                 }
                 Console.WriteLine();
                 Console.ResetColor();
@@ -115,7 +130,6 @@ namespace array_game
                     Console.ForegroundColor = colors[j % colors.Length];
                     Console.Write(playground[i, j] + "\t");
                 }
-
                 Console.WriteLine();
             }
         }
