@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("array_game")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0fd193570dabc36785c769d21aaba17788a4a7c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27dfb2114a95f0251fcf886f5a877b26e903c039")]
 [assembly: System.Reflection.AssemblyProductAttribute("array_game")]
 [assembly: System.Reflection.AssemblyTitleAttribute("array_game")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
