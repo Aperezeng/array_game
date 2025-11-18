@@ -29,16 +29,17 @@ static void Main(string[] args)
         "Select a data type to populate your grid. Enter '1' for numbers, '2' for symbols, or '3' for letters");
     string choice = Console.ReadLine();
 
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
+    //For Loop that will populate array with random numbers
+    int counter;
+    if (CHOICE_NUMBERS.Contains(choice))
+        for (int i = 0; i < rows; i++)
         {
-            //For Loop that will populate array with random numbers
-            if (CHOICE_NUMBERS.Contains(choice))
+            for (int j = 0; j < columns; j++)
             {
                 playground = new string[rows, columns];
-                int counter = 0;
+                counter = 0;
 
+                // Nested For Loop to populate each cell with a number
                 for (int k = 0; k < rows; k++)
                 for (int l = 0; l < columns; l++)
                 {
@@ -46,8 +47,12 @@ static void Main(string[] args)
                     counter++;
                 }
             }
+        }
 
-            if (CHOICE_SYMBOLS.Contains(choice))
+    if (CHOICE_SYMBOLS.Contains(choice))
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
             {
                 char evenSymbol = '$';
                 char oddSymbol = '*';
@@ -57,7 +62,6 @@ static void Main(string[] args)
                     {
                         //Print evenSymbol for even sum
                         playground[i, j] = evenSymbol.ToString();
-                        ;
                     }
                     else
                     {
@@ -66,16 +70,21 @@ static void Main(string[] args)
                     }
                 }
             }
+        }
 
-            if (CHOICE_LETTERS.Contains(choice))
+    if (CHOICE_LETTERS.Contains(choice))
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
             {
-                int lowerAbc = random.Next(LOWER_RANGE_LOWERCASE, UPPER_RANGE_LOWERCASE);
-                // Convert the ASCII value to a string
-                string randomLetter = ((char)lowerAbc).ToString();
-                playground[i, j] = randomLetter;
+                {
+                    int lowerAbc = random.Next(LOWER_RANGE_LOWERCASE, UPPER_RANGE_LOWERCASE);
+                    // Convert the ASCII value to a string
+                    string randomLetter = ((char)lowerAbc).ToString();
+                    playground[i, j] = randomLetter;
+                }
             }
         }
-    }
 
     ConsoleColor[] colors = { ConsoleColor.Red, ConsoleColor.Blue, ConsoleColor.Green, ConsoleColor.Yellow };
 
@@ -83,10 +92,8 @@ static void Main(string[] args)
     for (int i = 0; i < playground.GetLength(0); i++)
     {
         for (int j = 0; j < playground.GetLength(1); j++)
-
         {
             Console.ForegroundColor = colors[j % colors.Length];
-            //Console.Write(playground[i, j] + "\t");
             Console.Write($"[{i},{j}]: {playground[i, j]} \t");
         }
 
@@ -116,16 +123,36 @@ static void Main(string[] args)
     string result = Convert.ToString(playground[iAxis, jAxis]);
     playground[iAxis, jAxis] = input;
     Console.WriteLine($"The value {result} at index [{iAxis}, {jAxis}] has been replaced with {input}");
-    
-    //will print an updated version of our 2D array 
-    for (int i = 0; i < playground.GetLength(0); i++)
+
+
+    string vertical = "|";
+    string horizontal = "-";
+
+    //iterate through each row
+    for (int i = 0; i < playground.GetLength(0) && i < playground.GetLength(-1); i++)
     {
-        for (int j = 0; j < playground.GetLength(1); j++)
+        // Iterate through each column
+        for (int j = 0; j < playground.GetLength(0) && j < playground.GetLength(1); j++)
         {
+            Console.Write(vertical + " "); // Print "-" for each row
             Console.ForegroundColor = colors[j % colors.Length];
-            Console.WriteLine(playground[i, j] + "\t");
+            Console.Write($"[{i},{j}]: {playground[i, j]} \t");
         }
+
+        Console.WriteLine(vertical); // Print "|" at the end of each row
     }
-    Console.WriteLine();
+
+    //will print an updated version of our 2D array 
+    //for (int i = 0; i < playground.GetLength(0); i++)
+    //{
+    //for (int j = 0; j < playground.GetLength(1); j++)
+    //{
+    //Console.ForegroundColor = colors[j % colors.Length];  
+    //Console.Write($"[{i},{j}]: {playground[i, j]} \t");
+    //}
+    //}
+    //Console.WriteLine();
+    Main(args);
 }
-Main(args);
+
+
