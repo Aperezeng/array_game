@@ -1,51 +1,45 @@
-﻿using System.Text;
+﻿using System;
 
-static void Main(string[] args)
+using static System.Convert;
+System.Random random = new System.Random();
 {
     const string CHOICE_NUMBERS = "1";
     const string CHOICE_SYMBOLS = "2";
     const string CHOICE_LETTERS = "3";
-    const int LOWER_RANGE_LOWERCASE = 97; // ASCII lower range for lowercase letters
-    const int UPPER_RANGE_LOWERCASE = 122; // ASCII upper range for lowercase letters
-
-    //variable syntax that will create random numbers for all cells in our array
-    Random random = new Random();
-
+    const int LOWER_NUMBERS = 0; 
+    const int UPPER_NUMBERS = 9; 
+    const int LOWER_RANGE_LOWERCASE = 97; // ASCII lower case "a"
+    const int UPPER_RANGE_LOWERCASE = 122; // ASCII lower case "z"
+    
     // Welcome message to the user
     Console.WriteLine("Welcome to this Pseudo game to practice 2D arrays");
 
     //will allow user to enter the number of rows they want on their playground
     Console.WriteLine("How many rows do you want to generate?");
-    int rows = Convert.ToInt32(Console.ReadLine());
+    int rows = ToInt32(Console.ReadLine());
 
     //will allow user to enter the number of columns they want on their playground
     Console.WriteLine("How many columns do you want to generate?");
-    int columns = Convert.ToInt32(Console.ReadLine());
+    int columns = ToInt32(Console.ReadLine());
 
     //original 2D array syntax
     string[,] playground = new string [rows, columns];
-
     Console.WriteLine(
         "Select a data type to populate your grid. Enter '1' for numbers, '2' for symbols, or '3' for letters");
     string choice = Console.ReadLine();
 
+    
     //For Loop that will populate array with random numbers
-    int counter;
     if (CHOICE_NUMBERS.Contains(choice))
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
-                playground = new string[rows, columns];
-                counter = 0;
-
-                // Nested For Loop to populate each cell with a number
-                for (int k = 0; k < rows; k++)
-                for (int l = 0; l < columns; l++)
-                {
-                    playground[k, l] = counter.ToString();
-                    counter++;
-                }
+                //variable syntax that will create random numbers for all cells in our array
+                int randomNumbers = random.Next(LOWER_NUMBERS, UPPER_NUMBERS);
+                // Convert the ASCII value to a string
+                string numbers = randomNumbers.ToString();
+                playground[i, j] = numbers;
             }
         }
 
@@ -96,7 +90,6 @@ static void Main(string[] args)
             Console.ForegroundColor = colors[j % colors.Length];
             Console.Write($"[{i},{j}]: {playground[i, j]} \t");
         }
-
         Console.WriteLine();
         Console.ResetColor();
     }
@@ -111,48 +104,59 @@ static void Main(string[] args)
     Console.WriteLine($"in which row would you like to place this {input}?");
 
     //User will enter their wished row
-    int iAxis = Convert.ToInt32(Console.ReadLine());
+    int iAxis = ToInt32(Console.ReadLine());
 
     // Will ask the user the column number to override its original value
     Console.WriteLine($"In which column would you like to place this {input}?");
 
     //User will enter their wished column
-    int jAxis = Convert.ToInt32(Console.ReadLine());
+    int jAxis = ToInt32(Console.ReadLine());
 
     //code to replace the old value with the new value
     string result = Convert.ToString(playground[iAxis, jAxis]);
     playground[iAxis, jAxis] = input;
     Console.WriteLine($"The value {result} at index [{iAxis}, {jAxis}] has been replaced with {input}");
 
-
     string vertical = "|";
-    string horizontal = "-";
-
+    string horizontal = " - -";
+    
     //iterate through each row
-    for (int i = 0; i < playground.GetLength(0) && i < playground.GetLength(-1); i++)
+    for (int i = 0; i < playground.GetLength(0); i++)
     {
-        // Iterate through each column
-        for (int j = 0; j < playground.GetLength(0) && j < playground.GetLength(1); j++)
+        Console.Write(horizontal);
+        if (i <= rows) 
         {
-            Console.Write(vertical + " "); // Print "-" for each row
-            Console.ForegroundColor = colors[j % colors.Length];
-            Console.Write($"[{i},{j}]: {playground[i, j]} \t");
+            for (int k = 0; k < columns * 2; k++) // Adjust length of border
+            {
+                Console.Write(horizontal);
+            }
+            Console.WriteLine();
         }
 
+        // Iterate through each column  
+        for (int j = 0; j < playground.GetLength(1); j++)
+        {
+            Console.Write(vertical); // Print "|" for each row
+            Console.ForegroundColor = colors[j % colors.Length];
+            Console.Write($"[{i},{j}]: {playground[i, j]}");
+        }
         Console.WriteLine(vertical); // Print "|" at the end of each row
+        Console.WriteLine();
     }
-
-    //will print an updated version of our 2D array 
-    //for (int i = 0; i < playground.GetLength(0); i++)
-    //{
-    //for (int j = 0; j < playground.GetLength(1); j++)
-    //{
-    //Console.ForegroundColor = colors[j % colors.Length];  
-    //Console.Write($"[{i},{j}]: {playground[i, j]} \t");
-    //}
-    //}
-    //Console.WriteLine();
-    Main(args);
 }
+
+public class random
+{
+    
+}
+
+
+
+
+
+
+
+
+
 
 
