@@ -37,7 +37,7 @@ System.Random random = new System.Random();
             {
                 //variable syntax that will create random numbers for all cells in our array
                 int randomNumbers = random.Next(LOWER_NUMBERS, UPPER_NUMBERS);
-                // Convert the ASCII value to a string
+                // Convert the numbers to strings
                 string numbers = randomNumbers.ToString();
                 playground[i, j] = numbers;
             }
@@ -123,16 +123,12 @@ System.Random random = new System.Random();
     //iterate through each row
     for (int i = 0; i < playground.GetLength(0); i++)
     {
-        Console.Write(horizontal);
-        if (i <= rows) 
+        for (int k = 0; k < columns * 2.2; k++) // Adjust length of border
         {
-            for (int k = 0; k < columns * 2; k++) // Adjust length of border
-            {
-                Console.Write(horizontal);
-            }
-            Console.WriteLine();
+            Console.Write(horizontal);
         }
-
+        Console.WriteLine();
+        
         // Iterate through each column  
         for (int j = 0; j < playground.GetLength(1); j++)
         {
@@ -142,6 +138,12 @@ System.Random random = new System.Random();
         }
         Console.WriteLine(vertical); // Print "|" at the end of each row
         Console.WriteLine();
+    }
+    
+    //will print bottom border after the last column
+    for (int m = 0; m < playground.GetLength(1) * 2.4 -1; m++)
+    {
+        Console.Write(horizontal);
     }
 }
 
